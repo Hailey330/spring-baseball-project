@@ -1,0 +1,33 @@
+{{>nav}}
+
+<br/><br/>
+<div class="container">
+  <h2>홈구장 리스트</h2>
+  <p><code>홈구장 리스트를 확인하고 삭제하세요.</code></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>홈구장</th>
+        <th>삭제하기</th>
+      </tr>
+    </thead>
+    {{#stardium}}
+    <tbody>
+      <tr class="table-light">
+        <td>
+        	<input id="id_{{id}}" type="hidden" value="{{id}}" />{{id}}
+        </td>
+        <td>{{zone}}</td>
+        <td>
+        	<button id="delete_{{id}}" class="btn btn-outline-secondary btn-sm" >
+        	삭제
+        	</button>
+        </td>
+      </tr>
+    </tbody>
+    {{/stardium}}
+  </table>
+</div>
+
+<script src="../js/stardium.js"></script>

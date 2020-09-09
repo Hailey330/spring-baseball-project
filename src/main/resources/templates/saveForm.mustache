@@ -1,0 +1,71 @@
+{{>nav}}
+
+<br/><br/>
+<div class="container">
+  <h2>홈구장 & 팀 	등록하기</h2>
+  <p><code>홈구장과 팀을 등록하세요.</code></p>
+  <form action="/main/save" method="post" class="needs-validation" novalidate>
+    <div class="form-group">
+      <label for="stardiumName">홈구장(Stardium)</label>
+      <input type="text" class="form-control" placeholder="홈구장을 입력하세요." name="stardiumName" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">빈 칸을 채워주세요.</div>
+    </div>
+    <div class="form-group">
+      <label for="teamName">팀 명(Team)</label>
+      <input type="text" class="form-control" placeholder="팀 명을 입력하세요." name="teamName" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">빈 칸을 채워주세요.</div>
+    </div>
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember" required> 확인 완료
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">위 사항을 다시 한번 확인해주세요.</div>
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">등록하기</button>
+    </form>
+</div>
+<br/><br/>
+
+<div class="container">
+    <h2>선수 등록하기</h2>
+	<p><code>선수를 등록하세요.</code></p>
+  	<form action="/main/save/player" method="post" class="needs-validation" novalidate>
+	 <label for="sel1">팀 선택</label>
+      <select class="form-control" name="teamName">
+      {{#teamlist}}
+        <option value="{{name}}">{{name}}</option>
+      {{/teamlist}}
+      </select>
+  	<input type="hidden" value="{{#teamlist}}{{name}}{{/teamlist}}">
+    <br/>
+    <div class="form-group">
+      <label for="playerName">이름</label>
+      <input type="text" class="form-control" placeholder="선수 이름을 입력하세요." name="playerName" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">빈 칸을 채워주세요.</div>
+    </div>
+    <div class="form-group">
+      <label for="playerNumber">번호</label>
+      <input type="text" class="form-control" placeholder="선수 번호를 입력하세요." name="playerNumber" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">빈 칸을 채워주세요.</div>
+    </div>
+    <div class="form-group">
+      <label for="playerPosition">포지션</label>
+      <input type="text" class="form-control" placeholder="선수 포지션을 입력하세요." name="playerPosition" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">빈 칸을 채워주세요.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">등록하기</button>
+    <br/><br/>
+    <button class="btn btn-danger" onclick="location.href='/outplayer'">퇴출 선수 등록하기</button>
+    
+  </form>
+</div>
+<br/><br/><br/>
+
+
+<script src="../js/save.js"></script>

@@ -1,0 +1,39 @@
+{{>nav}}
+
+<br/><br/>
+<div class="container">
+  <h2>선수 리스트</h2>
+  <p><code>선수 리스트를 확인하고 삭제하세요.</code></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>선수 번호</th>
+        <th>선수 이름</th>
+        <th>포지션</th>
+        <th>퇴출 이유</th>
+        <th>삭제하기</th>
+      </tr>
+    </thead>
+    {{#player}}
+    <tbody>
+      <tr class="table-light">
+        <td>
+        	<input id="id_{{id}}" type="hidden" value="{{id}}" />{{id}}
+        </td>
+        <td>{{playerNumber}}</td>
+        <td>{{name}}</td>
+        <td>{{position}}</td>
+       	<th>퇴출 이유</th>
+        <td>
+        	<button id="delete_{{id}}" class="btn btn-outline-secondary btn-sm" >
+        	삭제
+        	</button>
+        </td>
+      </tr>
+    </tbody>
+    {{/player}}
+  </table>
+</div>
+
+<script src="../js/player.js"></script>
