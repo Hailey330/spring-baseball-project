@@ -12,6 +12,7 @@
         <th>선수 이름</th>
         <th>포지션</th>
         <th>퇴출 이유</th>
+        <th>퇴출 등록시간</th>
         <th>삭제하기</th>
       </tr>
     </thead>
@@ -24,7 +25,8 @@
         <td>{{playerNumber}}</td>
         <td>{{name}}</td>
         <td>{{position}}</td>
-       	<th>퇴출 이유</th>
+       	<td>{{#player}}{{reason}}{{/player}}</td>
+       	<td>{{#player}}{{createDate}}{{/player}}</td>
         <td>
         	<button id="delete_{{id}}" class="btn btn-outline-secondary btn-sm" >
         	삭제

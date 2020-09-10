@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.baseballproject.service.OutplayerService;
 import com.cos.baseballproject.service.PlayerService;
 
 import lombok.RequiredArgsConstructor;
@@ -16,10 +17,11 @@ import lombok.RequiredArgsConstructor;
 public class PlayerController {
 	
 	private final PlayerService playerService;
+	private final OutplayerService outPlayerService;
 	
 	@GetMapping("/player/list")
 	public String teamList(Model model) {
-		model.addAttribute("player", playerService.선수목록());
+		model.addAttribute("player", outPlayerService.퇴출선수리스트());
 		return "playerList";
 	}
 	
