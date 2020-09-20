@@ -4,6 +4,14 @@
 <div class="container">
     <h2>퇴출선수 등록하기</h2>
 	<p><code>퇴출할 선수를 등록하세요.</code></p>
+	<div class="text-center">
+		<code>
+	  	{{#allTeam}}
+	  		<a href="/outplayer/list/{{id}}">[{{name}}]</a>
+	  	{{/allTeam}}
+	  	</code>
+	</div>
+	<br/>
   	<form action="/outplayer/save" method="post" class="needs-validation" novalidate>
      <label for="sel2">선수 선택</label>
       <select class="form-control" name="playerName">

@@ -4,6 +4,14 @@
 <div class="container">
   <h2>선수 리스트</h2>
   <p><code>선수 리스트를 확인하고 삭제하세요.</code></p>
+  <div class="text-center">
+	  <code>
+	  	{{#allTeam}}
+	  		<a href="/player/list/{{id}}">[{{name}}]</a>
+	  	{{/allTeam}}
+	  </code>
+  </div>
+<br/>
   <table class="table">
     <thead>
       <tr>
@@ -16,8 +24,8 @@
         <th>삭제하기</th>
       </tr>
     </thead>
-    {{#player}}
     <tbody>
+    {{#player}}
       <tr class="table-light">
         <td>
         	<input id="id_{{id}}" type="hidden" value="{{id}}" />{{id}}
@@ -25,16 +33,16 @@
         <td>{{playerNumber}}</td>
         <td>{{name}}</td>
         <td>{{position}}</td>
-       	<td>{{#player}}{{reason}}{{/player}}</td>
-       	<td>{{#player}}{{createDate}}{{/player}}</td>
+       	<td>{{#reason}}{{reason}}{{/reason}}</td>
+       	<td>{{#createDate}}{{createDate}}{{/createDate}}</td>
         <td>
         	<button id="delete_{{id}}" class="btn btn-outline-secondary btn-sm" >
         	삭제
         	</button>
         </td>
       </tr>
-    </tbody>
     {{/player}}
+    </tbody>
   </table>
 </div>
 

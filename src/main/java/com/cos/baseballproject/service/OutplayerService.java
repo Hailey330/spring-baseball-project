@@ -20,17 +20,31 @@ public class OutplayerService {
 	private EntityManager em; // Entity로 매핑해줌
 
 	public List<OutplayerRespDto> 퇴출선수리스트(){
-		
 		StringBuilder sb = new StringBuilder();
-		sb.append("select p.playerNumber, p.name, p.position, o.reason, o.createDate ");
+		sb.append("select p.id, p.playerNumber, p.name, p.position, o.reason, o.createDate ");
 		sb.append("from player p left join outplayer o ");
-		sb.append("on p.id = o.playerId");
+		sb.append("on p.id=o.playerId");
 		String q = sb.toString();
 		
 		Query query = em.createNativeQuery(q, "OutplayerRespDtoMapping");
-		List<OutplayerRespDto> outplayerRespDto = query.getResultList();
-				
-		return outplayerRespDto;
+		List<OutplayerRespDto> outplayerEntity = query.getResultList();
+		System.out.println("outplayerRespDto 값 확인 : " + outplayerEntity);
+		return outplayerEntity;
+	}
+	
+	public List<OutplayerRespDto> 퇴출선수팀리스트(int teamId){
+		StringBuilder sb = new StringBuilder();
+		sb.append("select p.id, p.playerNumber, p.name, p.position, o.reason, o.createDate ");
+		sb.append("from player p left join outplayer o ");
+		sb.append("on p.id=o.playerId ");
+		sb.append("where p.teamId = ?");
+		String q = sb.toString();
+		
+		Query query = em.createNativeQuery(q, "OutplayerRespDtoMapping")
+				.setParameter(1, teamId);
+		List<OutplayerRespDto> outplayerEntity = query.getResultList();
+		System.out.println("outplayerRespDto 값 확인 : " + outplayerEntity);
+		return outplayerEntity;
 	}
 	
 }

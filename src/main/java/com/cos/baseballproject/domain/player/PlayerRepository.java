@@ -9,7 +9,10 @@ public interface PlayerRepository extends JpaRepository<Player, Integer>{
 
 	public Player findByName(String name);
 	
-	@Query(value = "select p.playerNumber, p.name, p.position, o.reason, o.createDate from player p left join outplayer o on p.id=o.playerId", nativeQuery = true)
+	@Query(value = "select p.id, p.teamId, p.playerNumber, p.name, p.position, o.reason, o.createDate from player p left join outplayer o on p.id = o.playerId", nativeQuery = true)
 	List<Player> mfindAll();
+	
+	List<Player> findByTeamId(int teamId);
+
 
 }

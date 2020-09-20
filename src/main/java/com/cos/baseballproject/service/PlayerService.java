@@ -8,8 +8,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cos.baseballproject.domain.Outplayer.Outplayer;
-import com.cos.baseballproject.domain.Outplayer.OutplayerRepository;
+import com.cos.baseballproject.domain.outplayer.Outplayer;
+import com.cos.baseballproject.domain.outplayer.OutplayerRepository;
 import com.cos.baseballproject.domain.player.Player;
 import com.cos.baseballproject.domain.player.PlayerRepository;
 import com.cos.baseballproject.web.dto.OutplayerRespDto;
@@ -29,8 +29,14 @@ public class PlayerService {
 	
 	@Transactional
 	public List<Player> 선수목록() {
-		// PlayerRespDto에 Player 정보 담고, outPlayer 정보도 같이 담아서 보낼 것!
 		List<Player> playerEntity = playerRepository.mfindAll();
+		System.out.println("playerEntity.get(0) 확인 : " + playerEntity.get(0));
+		return playerEntity;
+	}
+	
+	@Transactional
+	public List<Player> 선수팀목록(int teamId) {
+		List<Player> playerEntity = playerRepository.findByTeamId(teamId);
 		System.out.println("playerEntity.get(0) 확인 : " + playerEntity.get(0));
 		return playerEntity;
 	}
@@ -45,7 +51,6 @@ public class PlayerService {
 	@Transactional
 	public void 퇴출선수등록하기(SaveReqDto saveReqDto) {
 		Player playerEntity = playerRepository.findByName(saveReqDto.getPlayerName());
-		System.out.println("퇴출 선수 : " + playerEntity);
 		Outplayer outPlayerEntity = Outplayer.builder()
 				.player(playerEntity)
 				.reason(saveReqDto.getReason())

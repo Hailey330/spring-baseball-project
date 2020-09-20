@@ -1,4 +1,4 @@
-package com.cos.baseballproject.domain.Outplayer;
+package com.cos.baseballproject.domain.outplayer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
